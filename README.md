@@ -4,6 +4,7 @@ Nos piden modelar un juego en el que cada jugador maneja un conjunto de personaj
 
 Como recién estamos empezando a aprender programación con objetos, vamos a modelar una situación muy reducida, en la que aparecen solamente estos objetos:
 
+
 - **luisa**, una _jugadora_,
 - **floki**, un _personaje_ guerrero,
 - **mario**, un _personaje_ trabajador,

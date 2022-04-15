@@ -1,5 +1,13 @@
 object luisa {
+	var personajeActivo
 	
+	method asignarPersonajeActivo(personaje){
+		personajeActivo = personaje
+	}
+	
+	method aparece(elemento){
+		personajeActivo.encontrar(elemento)
+	}
 }
 
 
@@ -21,15 +29,20 @@ object floki {
 
 object mario {
 	var valorRecolectado = 0
+	var ultimoElemento
 	
 	method encontrar(elemento){
+		ultimoElemento = elemento
 		valorRecolectado = valorRecolectado + elemento.valor()
 		elemento.recibirTrabajo()
-		return self.esFeliz(elemento)
 		}
 		
-	method esFeliz(elemento){
-		return valorRecolectado >= 50 or elemento.altura() >= 10
+	method esFeliz(){
+		return valorRecolectado >= 50 or ultimoElemento.altura() >= 10
+	}
+	
+	method valorRecolectado(){
+		return valorRecolectado
 	}
 }
 
@@ -45,8 +58,11 @@ object ballesta{
 	method estaCargada(){
 		return flechas > 0
 	}
+	
+	method flechas(){
+		return flechas
+	}
 }
-
 
 object jabalina{
 	const potenciaDeAtaque = 30
@@ -61,7 +77,6 @@ object jabalina{
 		return sePuedeUsar
 	}
 }
-
 
 object castillo{
 	const altura = 20
@@ -82,6 +97,10 @@ object castillo{
 	method altura(){
 		return altura
 	}
+	
+	method defensa(){
+		return defensa
+	}
 }
 
 object aurora{
@@ -89,10 +108,14 @@ object aurora{
 	var estaViva = true
 	
 	method recibirAtaque(potenciaDeAtaque){
-		if(potenciaDeAtaque >= 10){
+		if(estaViva and potenciaDeAtaque >= 10){
 			estaViva = false
 		}
 	}
+	method estaViva(){
+		return estaViva
+		}
+	
 	
 	method valor(){
 		return 15

@@ -1,0 +1,46 @@
+import jugadoresPersonajes.*
+
+
+test "Luisa tiene como personaje activo a mario, se encuentra con aurora y despues con el castillo" {
+	luisa.asignarPersonajeActivo(mario)
+	luisa.aparece(aurora)
+	luisa.aparece(castillo)
+	assert.equals(45,mario.valorRecolectado())
+	assert.equals(true, mario.esFeliz())
+	assert.equals(170,castillo.defensa())
+	
+}
+
+test "Floki tiene como arma la jabalina. luisa tiene como personaje activo a mario.
+ 	A luisa le aparece la tipa. Después el personaje activo cambia a floki, y después de este cambio, 
+	a luisa le aparecen primero aurora y después el castillo."{
+	floki.agarrarArma(jabalina)
+	luisa.asignarPersonajeActivo(mario)
+	luisa.aparece(tipa)
+	luisa.asignarPersonajeActivo(floki)
+	luisa.aparece(aurora)
+	luisa.aparece(castillo)
+	
+	assert.equals(16,mario.valorRecolectado())
+	assert.equals(9,tipa.altura())
+	assert.equals(false,aurora.estaViva())
+	assert.equals(150,castillo.defensa())
+	assert.equals(false,jabalina.estaCargada())
+}
+
+test "Floki tiene como arma la ballesta, luisa tiene como personaje activo a floki. A luisa le aparecen primero
+	aurora y después el castillo."{
+	floki.agarrarArma(ballesta)	
+	luisa.asignarPersonajeActivo(floki)
+	luisa.aparece(aurora)
+	luisa.aparece(castillo)
+	
+	assert.equals(0,mario.valorRecolectado())
+	assert.equals(true,aurora.estaViva())
+	assert.equals(146,castillo.defensa())
+	assert.equals(true,ballesta.estaCargada())
+	assert.equals(8,ballesta.flechas())
+	}
+	
+	
+	
